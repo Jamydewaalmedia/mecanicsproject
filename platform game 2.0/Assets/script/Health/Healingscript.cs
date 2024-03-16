@@ -5,12 +5,33 @@ using UnityEngine;
 
 public class Healingscript : MonoBehaviour
 {
-    [SerializeField]private HealthManager _healthManager;
-    // Start is called before the first frame update
+    [SerializeField] private HealthManager healthManager;
+    [SerializeField] private float delayedtime; 
+
+// Start is called before the first frame update
     void Start()
     {
-        _healthManager = GetComponent<HealthManager>();
+        // Find the GameObject named "HealthManager" in the scene
+        GameObject healthManagerGameObject = GameObject.Find("HealthManager");
+
+        if (healthManagerGameObject != null)
+        {
+            // Attempt to get the HealthManager component attached to the found GameObject
+            healthManager = healthManagerGameObject.GetComponent<HealthManager>();
+
+            if (healthManager == null)
+            {
+                // If HealthManager component is not found, log an error
+                Debug.LogError("HealthManager component not found on the GameObject named 'HealthManager'");
+            }
+        }
+        else
+        {
+            // If GameObject named "HealthManager" is not found, log an error
+            Debug.LogError("GameObject named 'HealthManager' not found in the scene");
+        }
     }
+
 
     // Update is called once per frame
     void Update()
@@ -18,8 +39,15 @@ public class Healingscript : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        _healthManager.AddHealty(20f);
+        this.DelayedAction(delayedtime, () =>
+        {
+            healthManager.AddHealty(20f);
+            Destroy(gameObject);
+            // Put your code here that you want to execute after the delay
+        });
+       
     }
+    
 }
