@@ -16,16 +16,16 @@ public class ObjectManipulator : MonoBehaviour
                 // Check if the object is colliding with the player
                 Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(1f, 1f), 0f); // Adjust the size as needed
 
-                foreach (Collider2D collider in colliders)
-                {
-                    if (collider.CompareTag("DestroyableObject"))
-                    {
-                        Debug.Log("collide with tnt");
-                        pickedObject = collider.gameObject;
-                        pickedObject.transform.SetParent(transform);
-                        break;
-                    }
-                }
+                //foreach (Collider2D collider in colliders)
+                //{
+                //   if (collider.CompareTag("DestroyableObject"))
+                //    {
+                //        Debug.Log("collide with tnt");
+                //        pickedObject = collider.gameObject;
+                //        pickedObject.transform.SetParent(transform);
+                //        break;
+                //    }
+                //}
             }
         }
 
