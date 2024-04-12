@@ -35,8 +35,9 @@ public class JumpSimulator : MonoBehaviour
     
     double CalculateJumpHeight(double totalTime)
     {
-        // Hoogteformule: f(t) = v0*t - 0.5*g*t^2 + Δh
+        // Hoogteformule: f(t) = v0*t - 0.5*g*t^2 + Δh 
         double height = v0 * totalTime - 0.5 * g * totalTime * totalTime + deltaH;
+        this.WriteToConsole("did werkt niet omdat hij een variable heeft genaam delta H inplaats van de werkelijk deltaH",Color.red);
         return height;
     }
 
