@@ -43,6 +43,10 @@ public class Healingscript : MonoBehaviour
     {
         this.DelayedAction(delayedtime, () =>
         {
+            this.WriteToConsole("Picked up Healing", Color.green, bold:true);
+            this.WriteToConsole("Custom message", Color.blue, italic: true, includeTimestamp: true);
+            this.WriteToConsole("Warning message", Color.yellow, bold: true, italic: true, includeTimestamp: true);
+            
             healthManager.AddHealty(20f);
             Destroy(gameObject);
             // Put your code here that you want to execute after the delay
